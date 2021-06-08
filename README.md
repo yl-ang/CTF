@@ -1,1 +1,1 @@
-# CTF Writeups for etc2020
+# CTF Writeups by etc2020
