@@ -1,5 +1,1 @@
-# DSO-NUS-CTF-2021
-
-## Login sdasd
-
-# test
+# CTF Writeups for etc2020
