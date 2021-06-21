@@ -1,0 +1,1 @@
+https://0x10f8.wordpress.com/2019/05/21/subverting-nx-bit-with-return-to-libc/
