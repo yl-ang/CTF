@@ -1,0 +1,3 @@
+Search for '_' in the copied strings.
+
+CDDC21{Th1s_!s_IT}

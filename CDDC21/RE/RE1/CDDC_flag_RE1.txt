@@ -1,0 +1,10 @@
+1072 1088 1088 1072 800 784 1968 848 880 1824 784 1760 864 880 1664 816 768 1824 1936 2000
+
+C     D    D    C    2    1   {   5   7    r   1    n   6   7    h   3    0   r    y    }    
+
+
+Noticed difference between C and D is 16, there for since C and D are 1 position away from each other in the ASCII table, 1 position offset is now 16.
+
+Calculating offsets between each ASCII gave us the flag:
+
+CDDC21{57r1n67h30ry}  
