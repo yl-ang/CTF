@@ -49,7 +49,7 @@ switchD_001016e8_caseD_0:
 }
 ```
 
-I took a look at main and the other functions, which does not present any possible vulnerability except for the function ```buy items```. It seems like ```buy items``` takes in our input and prints it out using the ```printf``` function. This could mean that it is a format string vulenerability.
+I took a look at main and the other functions, which does not present any possible vulnerability except for the function ```buy item```. It seems like ```buy item``` takes in our input and prints it out using the ```printf``` function. This could mean that it is a format string vulenerability.
 
 ```buy_item``` function:
 ```
