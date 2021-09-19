@@ -88,7 +88,7 @@ void buy_item(void)
 }
 ```
 
-I also noticed that the flag file is opened and stored at the location ```0x00104060``` in memory. This could mean that I would need to access the location of where the flag is stored in the memory using the prinf format string vulnerability.
+I also noticed that the flag file is opened and stored at the location ```0x00104060``` in memory. This could mean that I would need to access the location of where the flag is stored in the memory using the ```printf``` format string vulnerability.
 
 Opening of ```FLAG``` file:
 ```
