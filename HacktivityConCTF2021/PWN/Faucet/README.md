@@ -2,6 +2,7 @@
 
 This is a writeup for "Faucet" challenge of HacktivityCon CTF 2021. 
 
+## Solve
 I started off by disassembling the file using ghidra disassembler.
 
 ```main``` function:
