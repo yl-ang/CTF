@@ -220,8 +220,7 @@ From earlier, when I was printing out the addresses on the stack, I got ```AAAAB
 I went on to print the byte code of the ```FLAG``` memory address.
 
 ```FLAG``` memory address in bytes:
-
-FLAG addr:  ```b'` \xd0\x1ckU\x00\x00'```
+```b'` \xd0\x1ckU\x00\x00'```
 
 I noticed that ```\x00\x00``` are being appended to the back of the address, and because the arch of this binary is ```amd64-64-little```, it is using little endian byte-ordering, hence, the ```\x00\x00``` is being appended to the back of the address, which actually just means writing the FLAG address, eg. ```0x00561caf7bf060``` , backwards. 
 However, this poses as a problem for ```printf``` because ```printf``` stops printing when a NULL byte is reached, which explains, why our print "terminated" in the middle while printing the rest of our input.
