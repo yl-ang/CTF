@@ -153,7 +153,7 @@ Output:
 24 - AAAABBBB 0x55dc9295b1e0      
 25 - AAAABBBB 0x7fffbdec0fd0
 ```
-From the output we can see that our input is being stored at postion 6 of the stack. The character "A" is '0x41' and "B" is '0x42' in hexadecimal representation. This means that we are able to pass in the memory address of where the ```FLAG```is stored and access the memory address at the specific stack location (which was found to be 6), and possibly peek at the contents stored in there. We can peek at the contents at the memory address using the format string identifier "%s".
+From the output we can see that our input is being stored at postion 6 of the stack. The character "A" is '0x41' and "B" is '0x42' in hexadecimal representation. This means that we are able to pass in the memory address of where the ```FLAG``` is stored and access the memory address at the specific stack location (which was found to be 6), and possibly peek at the contents stored in there. We can peek at the contents at the memory address using the format string identifier "%s".
 
 Now, to obtain the memory address of where the ```FLAG``` is stored, I noticed that at stack position 21, the last 3 digits seems to correspond to the last 3 digits of the ```main``` function address location in the disassembled binary file, which was ```0x00101621```. Thus, using this information, I can print out the location of the stack that stores the ```main``` memory address, and compute the base address of the binary. Then, using the base address of the binary, I will be able to compute the actual memory address of where the ```FLAG``` is stored.
 
