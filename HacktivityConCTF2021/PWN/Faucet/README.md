@@ -222,8 +222,7 @@ I went on to print the byte code of the ```FLAG``` memory address.
 ```FLAG``` memory address in bytes:
 ```b'` \xd0\x1ckU\x00\x00'```
 
-I noticed that ```\x00\x00``` are being appended to the back of the address, and because the arch of this binary is ```amd64-64-little```, it is using little endian byte-ordering, hence, the ```\x00\x00``` is being appended to the back of the address, which actually just means writing the FLAG address, eg. ```0x00561caf7bf060``` , backwards. 
-However, this poses as a problem for ```printf``` because ```printf``` stops printing when a NULL byte is reached, which explains, why our print "terminated" in the middle while printing the rest of our input.
+I noticed that ```\x00\x00``` are being appended to the back of the address, and because the arch of this binary is ```amd64-64-little```, it is using little endian byte-ordering, hence, the ```\x00\x00``` is being appended to the back of the address, which actually just means writing the ```FLAG``` address, eg. ```0x00561caf7bf060``` , backwards. However, this poses as a problem for ```printf``` because ```printf``` stops printing when a NULL byte is reached, which explains, why our print "terminated" in the middle while printing the rest of our input.
 
 I thought long and hard for a workaround, tried various modifications to my payload, and eventually discovered that I could simply pad my input with random 8 bytes, which sorts of "pushes" the ```FLAG``` memory address to the next stack location (i.e. 7) instead of 6 in my case. By doing so , I will be able to access and print the contents at the ```FLAG``` memory address that was push onto the stack location previously.
 
