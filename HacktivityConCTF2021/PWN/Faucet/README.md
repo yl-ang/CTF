@@ -2,7 +2,10 @@
 
 This is a writeup for "Faucet" challenge of HacktivityCon CTF 2021. 
 
-## Solve
+## Description
+My faucet has a little leak. I really should get it fixed before it causes any damage...
+
+## Solution
 I started off by disassembling the file using ghidra disassembler.
 
 ```main``` function:
