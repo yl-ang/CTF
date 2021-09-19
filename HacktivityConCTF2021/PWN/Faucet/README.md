@@ -49,7 +49,7 @@ switchD_001016e8_caseD_0:
 }
 ```
 
-I took a look at main and the other functions, which does not present any possible vulnerability except for the function ```buy items```. It seems like ```buy items``` takes in our input and prints it out using the printf function. This could mean that it is a format string vulenerability.
+I took a look at main and the other functions, which does not present any possible vulnerability except for the function ```buy items```. It seems like ```buy items``` takes in our input and prints it out using the ```printf``` function. This could mean that it is a format string vulenerability.
 
 ```buy_item``` function:
 ```
@@ -112,7 +112,7 @@ PIE:      PIE enabled
 
 It seems like all the protections are enabled, and of all of them, Position-Indpendent Executable (PIE) is also enabled, which means that the address of ```FLAG``` where it is stored is not simply ```0x00104060``` as PIE changes the base address of the binary file. 
 
-I proceeded to print the stack values using the format string vulnerability of printf.
+I proceeded to print the stack values using the format string vulnerability of ```printf```.
 
 Python script:
 ```
@@ -208,7 +208,7 @@ What item would you like to buy?: You have bought a `\x80b\xef\xa5U
 > $
 ```
 
-From earlier, when I was printing out the addresses on the stack, I got ```AAAABBBB {Contents on stack}```, however, in this output, I got only the ```AAAABBBB``` portion. It seems like the printf got "terminated" halfway after printing our input.
+From earlier, when I was printing out the addresses on the stack, I got ```AAAABBBB {Contents on stack}```, however, in this output, I got only the ```AAAABBBB``` portion. It seems like the ```printf``` got "terminated" halfway after printing our input.
 
 I went on to print the byte code of the ```FLAG``` memory address.
 
@@ -217,7 +217,7 @@ I went on to print the byte code of the ```FLAG``` memory address.
 
 I noticed that ```\x00\x00``` are being appended to the back of the address, and because the arch of this binary is ```amd64-64-little```, it is using little endian byte-ordering, hence, the ```\x00\x00``` is being appended to the back of the address, which actually just means writing the FLAG address, eg. ```0x00561caf7bf060``` , backwards.
 
-However, this poses as a problem for printf because printf stops printing when a NULL byte is reached, which explains, why our print "terminated" in the middle while printing the rest of our input.
+However, this poses as a problem for ```printf``` because ```printf``` stops printing when a NULL byte is reached, which explains, why our print "terminated" in the middle while printing the rest of our input.
 
 I thought long and hard for a workaround, tried various modifications to my payload, and eventually discovered that I could simply pad my input with random 8 bytes, which sorts of "pushes" the ```FLAG``` memory address to the next stack location (i.e. 7) instead of 6 in my case. By doing so , I will be able to access and print the contents at the ```FLAG``` memory address that was push onto the stack location previously.
 
