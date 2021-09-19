@@ -1,6 +1,9 @@
 # Faucet - HacktivityCon 2021
 
-This is a writeup for "Faucet" challenge of HacktivityCon CTF 2021. 
+* Challenge Name: Faucet
+* Points: 413
+* Solves: 90
+* Solved by: iRectify
 
 ## Description
 My faucet has a little leak. I really should get it fixed before it causes any damage...
