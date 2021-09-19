@@ -71,7 +71,7 @@ void buy_item(void)
   
   local_10 = *(long *)(in_FS_OFFSET + 0x28);
   printf("What item would you like to buy?: ");
-  fgets(local_38,0x20,stdin); **// retrieves 32 bytes of inputs from user**
+  fgets(local_38,0x20,stdin); // retrieves 32 bytes of inputs from user
   sVar2 = strcspn(local_38,"\n");
   local_38[sVar2] = '\0';
   iVar1 = strcmp(local_38,"hammer");
@@ -85,7 +85,7 @@ void buy_item(void)
     }
   }
   printf("You have bought a "); 
-  printf(local_38); **// prints our input that was parsed**
+  printf(local_38); // prints our input that was parsed
   puts("\n");
   if (local_10 != *(long *)(in_FS_OFFSET + 0x28)) {
                     /* WARNING: Subroutine does not return */
