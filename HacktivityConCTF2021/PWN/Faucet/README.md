@@ -1,6 +1,6 @@
 # Faucet - HacktivityCon 2021
 
-* Challenge Name: Faucet
+* Category: Binary Exploitation / PWN
 * Points: 413
 * Solves: 90
 * Solved by: iRectify
